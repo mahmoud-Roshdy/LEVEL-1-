@@ -1,0 +1,60 @@
+ {optionAnswer.map((option, indx) => {
+          // console.log("map", indx);
+          return (
+            <Row justify="center" align="top" key={indx}>
+              <Col
+                className={indx !== 0 ? "colonHide" : ""}
+                id="colAnswerLabel"
+                Col
+                xs={{ flex: 1 }}
+                sm={{ push: 1 }}
+                md={{ push: 0 }}
+              >
+                Answers
+                <span className="colon">*</span>
+              </Col>
+
+              <Col
+                xs={{ flex: 1 }}
+                sm={{ push: 1 }}
+                md={{ push: 0 }}
+                className="borderAnswers"
+              >
+                <Row align="middle">
+                  <Col span={21}>
+                    <Form.Item
+                      name={`answerEn${indx}`}
+                      rules={[{ required: true }]}
+                    >
+                      <Input
+                        className="inputAnswer "
+                        placeholder={`Option ${indx + 1}`}
+                      />
+                    </Form.Item>
+
+                    <Form.Item
+                      name={`answerAr${indx}`}
+                      rules={[{ required: true }]}
+                    >
+                      <Input
+                        className="inputAnswerAR"
+                        placeholder={`${indx + 1}الإختيار`}
+                      />
+                    </Form.Item>
+                  </Col>
+                  {optionAnswer.length > 2 && (
+                    <Col span={1} offset={0}>
+                      <span onClick={() => handleDelete(indx)}>
+                        <img
+                          className="cursor-pointer"
+                          src={deleteAnswer}
+                          alt="Add"
+                        />
+                      </span>
+                    </Col>
+                  )}
+                </Row>
+              </Col>
+            </Row>
+          );
+        })}
